@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 COPY ./app/requirements.txt .
 
+COPY ./configs/app.toml .
+
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY ./app/ .

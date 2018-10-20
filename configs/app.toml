@@ -1,0 +1,5 @@
+MONGODB_URL = 'mongodb://0.0.0.0:0000/'
+SECRET_KEY = 'secretkey'
+HOST_IP = "0.0.0.0"
+RABBITMQ_DEFAULT_USER = "user"
+RABBITMQ_DEFAULT_PASS = "pass"

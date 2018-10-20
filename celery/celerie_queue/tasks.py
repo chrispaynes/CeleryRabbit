@@ -2,12 +2,13 @@ from __future__ import absolute_import
 from celerie_queue.celery import app
 import time
 import requests
+import toml
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://192.168.99.120:27017/')
+config = toml.load('app.toml')
+client = MongoClient(config.get('MONGODB_URL'))
 db = client.celerie_queue
 collection = db.tasks
-
 
 # import the app celery module app and use it as a decorator for the task method
 @app.task(name='celerie_queue.task', bind=True, default_retry_delay=20)
@@ -22,5 +23,4 @@ def addTime(self, i):
     except Exception as e:
         print("Hit Exception: ", e)
         raise self.retry(e=e)
-    # return r.status_code
     return 200

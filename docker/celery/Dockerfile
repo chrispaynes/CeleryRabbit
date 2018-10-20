@@ -9,6 +9,8 @@ WORKDIR /usr/src/app
 
 COPY ./celery/requirements.txt .
 
+COPY ./configs/app.toml .
+
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY ./celery/celerie_queue ./celerie_queue
